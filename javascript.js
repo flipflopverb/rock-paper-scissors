@@ -30,58 +30,41 @@ function computerPlay(){
 
 
 function humanPlay(){
-    humanHand = document.getElementById("humanInput").value
+    humanHand = document.getElementById("humanInput").value.toLowerCase()
     document.getElementById("humanChoice").innerHTML = humanHand
     console.log(humanHand+" human")
 }
 
 function roundDeclaration() {
+    round ++
+    document.getElementById("roundCount").innerHTML = round
     if (humanHand == computerHand){
         document.getElementById("roundResult").innerHTML = "tie for "
-        round ++
-        document.getElementById("computerScoreCount").innerHTML = computerScore
-        document.getElementById("roundCount").innerHTML = round
     }else if ((humanHand == "rock") && (computerHand == "paper")){
-        document.getElementById("roundResult").innerHTML = "human loses"
-        round ++
+        document.getElementById("roundResult").innerHTML = "human loses"     
         computerScore ++
-        document.getElementById("computerScoreCount").innerHTML = computerScore
-        document.getElementById("roundCount").innerHTML = round
     }else if ((humanHand == "rock") && (computerHand == "scissors")){
-        document.getElementById("roundResult").innerHTML = "human wins"
-        round ++
-        humanScore ++
-        document.getElementById("humanScoreCount").innerHTML = humanScore
-        document.getElementById("roundCount").innerHTML = round
+        document.getElementById("roundResult").innerHTML = "human wins"    
+        humanScore ++        
     }else if ((humanHand == "paper") && (computerHand == "rock")){
-        document.getElementById("roundResult").innerHTML = "human wins"
-        round ++
+        document.getElementById("roundResult").innerHTML = "human wins"     
         humanScore ++
-        document.getElementById("humanScoreCount").innerHTML = humanScore
-        document.getElementById("roundCount").innerHTML = round
-    }else if ((humanHand = "paper") && (computerHand = "scissors")){
-        document.getElementById("roundResult").innerHTML = "human loses"
-        round ++
+    }else if ((humanHand == "paper") && (computerHand = "scissors")){
+        document.getElementById("roundResult").innerHTML = "human loses"  
         computerScore ++
-        document.getElementById("computerScoreCount").innerHTML = computerScore
-        document.getElementById("roundCount").innerHTML = round
     }else if ((humanHand == "scissors") && (computerHand == "paper")){
-        document.getElementById("roundResult").innerHTML = "human wins"
-        round ++
+        document.getElementById("roundResult").innerHTML = "human wins"   
         humanScore ++
-        document.getElementById("humanScoreCount").innerHTML = humanScore
-        document.getElementById("roundCount").innerHTML = round
     }else if ((humanHand == "scissors") && (computerHand == "rock")){
-        document.getElementById("roundResult").innerHTML = "human loses"
-        round ++
+        document.getElementById("roundResult").innerHTML = "human loses"    
         computerScore ++
-        document.getElementById("computerScoreCount").innerHTML = computerScore
-        document.getElementById("roundCount").innerHTML = round
     }else {
-        document.getElementById("roundResult").innerHTML = "no contest"
-        round ++
-        document.getElementById("roundCount").innerHTML = round
+        document.getElementById("roundResult").innerHTML = "due to incompetent spelling the human loses"
+        computerScore ++
     }
+
+    document.getElementById("computerScoreCount").innerHTML = computerScore
+    document.getElementById("humanScoreCount").innerHTML = humanScore
 }
 
 function gameDeclaration(){
@@ -90,25 +73,22 @@ function gameDeclaration(){
     roundDeclaration()
 
     if((round%10)==0){
-       
+
         if(humanScore>computerScore){
-            humanScore = 0
-            computerScore = 0
             humanGameScore ++
-            document.getElementById("humanGameScoreCount").innerHTML = humanGameScore
-            document.getElementById("computerGameScoreCount").innerHTML = computerGameScore
-            document.getElementById("computerScoreCount").innerHTML = computerScore
-            document.getElementById("humanScoreCount").innerHTML = humanScore
-        } else {
             computerScore = 0
             humanScore = 0
+        } else {
             computerGameScore ++
-            document.getElementById("humanGameScoreCount").innerHTML = humanGameScore
-            document.getElementById("computerGameScoreCount").innerHTML = computerGameScore
-            document.getElementById("computerScoreCount").innerHTML = computerScore
-            document.getElementById("humanScoreCount").innerHTML = humanScore
+            computerScore = 0
+            humanScore = 0
         }
-        
+
+        document.getElementById("humanGameScoreCount").innerHTML = humanGameScore
+        document.getElementById("computerGameScoreCount").innerHTML = computerGameScore
+        document.getElementById("computerScoreCount").innerHTML = computerScore
+        document.getElementById("humanScoreCount").innerHTML = humanScore
+
         document.getElementById("submitButton").disable = true;
 
 

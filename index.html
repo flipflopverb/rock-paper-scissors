@@ -2,20 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="javascript.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors</title>
 </head>
  <body>
-<input type="text" id="humanInput" value="paper">
-<input type="button" id="submitButton" onclick="gameDeclaration()" value="SUBMIT">
-<p>the human chooses: <span id="humanChoice"></span></p>
-<p>the computer chooses: <span id="computerChoice"></span></p>
-<p>Round Winner: <span id="roundResult"></span> round <span id="roundCount">0</span>!</p>
-<p>Human - round wins:<span id="humanScoreCount">0</span></p>
-<p>Computer - round wins:<span id="computerScoreCount">0</span></p>
-<p>Human - Games Won: <span id="humanGameScoreCount">0</span></p>
-<p>Computer - Games Won: <span id="computerGameScoreCount">0</span></p>
+     <h1>Rock, Paper, Scissors</h1>
+<div class="game">
+     <div class="gameControl">
+        <input type="text" id="humanInput" value="paper">
+        <input type="button" id="submitButton" onclick="gameDeclaration()" value="SUBMIT">
+    </div>
 
+    <div class="roundData">
+        <p>the human chooses: <span id="humanChoice"></span></p>
+        <p>the computer chooses: <span id="computerChoice"></span></p>
+        <p>Round Winner: <span id="roundResult"></span> round <span id="roundCount">0</span>!</p>
+        <p>Human - round wins:<span id="humanScoreCount">0</span></p>
+        <p>Computer - round wins:<span id="computerScoreCount">0</span></p>
+    </div>
+
+    <div class="gameData">
+        <p>Human - Games Won: <span id="humanGameScoreCount">0</span></p>
+        <p>Computer - Games Won: <span id="computerGameScoreCount">0</span></p>
+    </div>
+</div>
 
  </body>
- <script src="javascript.js"></script>
 </html>
