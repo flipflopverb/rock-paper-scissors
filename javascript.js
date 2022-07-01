@@ -1,66 +1,124 @@
 let generator = Math.random()
 let computerHand;
 let humanHand;
-let submission;
-let humanSubmission = "rock"
+let humanSubmission;
+let computerSubmission;
 let submitButton;
-let rounds = 0;
+let round = 0;
+let humanScore = 0;
+let computerScore = 0;
+let humanGameScore = 0;
+let computerGameScore = 0;
 
 function computerPlay(){
     rnd = Math.random()
     stringOfRnd = rnd.toString()
     fourthDigit = stringOfRnd.charAt(4)
-
     if(fourthDigit <= 3){
-        return "paper"
-    } else if (fourthDigit >=7) {
-        return "rock"
+        document.getElementById("computerChoice").innerHTML = "rock"
+        computerHand = "rock"
+    } else if (fourthDigit >= 8) {
+        document.getElementById("computerChoice").innerHTML = "paper"
+        computerHand = "paper"
     } else {
-        return "scissors"
+        document.getElementById("computerChoice").innerHTML = "scissors"
+        computerHand = "scissors"
     }
+    console.log(computerHand)
 }
+
 
 
 function humanPlay(){
-   return humanSubmission
+    humanHand = document.getElementById("humanInput").value
+    document.getElementById("humanChoice").innerHTML = humanHand
+    console.log(humanHand+" human")
 }
 
-function winnerDeclaration(a,b) {
-    let computerHand = computerPlay();
-    let humanHand = humanPlay();
-
+function roundDeclaration() {
     if (humanHand == computerHand){
-        rounds +=1 
-        return "It's a fucking tie"
-    } else if ((humanHand == "rock" && computerHand == "scissors") 
-            || (humanHand == "paper" && computerHand == "rock") 
-            || (humanHand == "scissors" && computerHand == "paper")) {
-                rounds +=1 
-                return "Human Victory!!!"
-    } else if ((computerHand == "rock" && humanHand == "scissors") 
-            || (computerHand == "paper" && humanHand == "rock") 
-            || (computerHand == "scissors" && humanHand == "paper"))
-        {
-        rounds +=1 
-        return "The computer has beaten the human contestant!"
-    } else { return "no contest"}
-}
-
-function gameResults(){
-    for (let i=0; i < 5; i++){
-
-        if (winnerDeclaration() == "It's a fucking tie"){
-            rounds +=1
-            console.log(rounds)
-        } else if (winnerDeclaration() == "Human Victory!!!"){
-            rounds +=1
-            console.log(rounds)
-        } else if (winnerDeclaration() == "Human Victory!!!"){
-            rounds +=1
-            console.log(rounds)
-    } else {
-            rounds +=1
-            console.log(rounds)
+        document.getElementById("roundResult").innerHTML = "tie for "
+        round ++
+        document.getElementById("computerScoreCount").innerHTML = computerScore
+        document.getElementById("roundCount").innerHTML = round
+    }else if ((humanHand == "rock") && (computerHand == "paper")){
+        document.getElementById("roundResult").innerHTML = "human loses"
+        round ++
+        computerScore ++
+        document.getElementById("computerScoreCount").innerHTML = computerScore
+        document.getElementById("roundCount").innerHTML = round
+    }else if ((humanHand == "rock") && (computerHand == "scissors")){
+        document.getElementById("roundResult").innerHTML = "human wins"
+        round ++
+        humanScore ++
+        document.getElementById("humanScoreCount").innerHTML = humanScore
+        document.getElementById("roundCount").innerHTML = round
+    }else if ((humanHand == "paper") && (computerHand == "rock")){
+        document.getElementById("roundResult").innerHTML = "human wins"
+        round ++
+        humanScore ++
+        document.getElementById("humanScoreCount").innerHTML = humanScore
+        document.getElementById("roundCount").innerHTML = round
+    }else if ((humanHand = "paper") && (computerHand = "scissors")){
+        document.getElementById("roundResult").innerHTML = "human loses"
+        round ++
+        computerScore ++
+        document.getElementById("computerScoreCount").innerHTML = computerScore
+        document.getElementById("roundCount").innerHTML = round
+    }else if ((humanHand == "scissors") && (computerHand == "paper")){
+        document.getElementById("roundResult").innerHTML = "human wins"
+        round ++
+        humanScore ++
+        document.getElementById("humanScoreCount").innerHTML = humanScore
+        document.getElementById("roundCount").innerHTML = round
+    }else if ((humanHand == "scissors") && (computerHand == "rock")){
+        document.getElementById("roundResult").innerHTML = "human loses"
+        round ++
+        computerScore ++
+        document.getElementById("computerScoreCount").innerHTML = computerScore
+        document.getElementById("roundCount").innerHTML = round
+    }else {
+        document.getElementById("roundResult").innerHTML = "no contest"
+        round ++
+        document.getElementById("roundCount").innerHTML = round
     }
 }
+
+function gameDeclaration(){
+    humanPlay()
+    computerPlay()
+    roundDeclaration()
+
+    if((round%10)==0){
+       
+        if(humanScore>computerScore){
+            humanScore = 0
+            computerScore = 0
+            humanGameScore ++
+            document.getElementById("humanGameScoreCount").innerHTML = humanGameScore
+            document.getElementById("computerGameScoreCount").innerHTML = computerGameScore
+            document.getElementById("computerScoreCount").innerHTML = computerScore
+            document.getElementById("humanScoreCount").innerHTML = humanScore
+        } else {
+            computerScore = 0
+            humanScore = 0
+            computerGameScore ++
+            document.getElementById("humanGameScoreCount").innerHTML = humanGameScore
+            document.getElementById("computerGameScoreCount").innerHTML = computerGameScore
+            document.getElementById("computerScoreCount").innerHTML = computerScore
+            document.getElementById("humanScoreCount").innerHTML = humanScore
+        }
+        
+        document.getElementById("submitButton").disable = true;
+
+
+    } else {
+        document.getElementById("submitButton").disable = false;
+    }
+
+
+
 }
+
+
+
