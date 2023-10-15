@@ -1,33 +1,33 @@
 body {
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .game {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
 }
 
 .gameData,
 .roundData {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 200px;
-    width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 200px;
+  width: 400px;
 }
 
 .gameControl {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    width: 400px;
-}
+  display: flex;
+  flex-direction: row;
 
+  justify-content: space-around;
+  align-content: center;
+  width: 400px;
+}
